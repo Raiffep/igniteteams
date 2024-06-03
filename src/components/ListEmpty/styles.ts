@@ -1,6 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
-import { UsersThree } from 'phosphor-react-native';
+import styled, { css } from "styled-components/native";
 
 export const Container = styled(TouchableOpacity)`
   flex: 1;
@@ -9,7 +8,9 @@ export const Container = styled(TouchableOpacity)`
 `;
 
 export const Message = styled.Text`
-  color: ${({ theme }) => theme.COLORS.GRAY_300};
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  ${({ theme }) => css`
+    color: ${theme.COLORS.GRAY_300};
+    font-size: ${theme.FONT_SIZE.SM};
+    font-family: ${theme.FONT_FAMILY.REGULAR};
+  `};
 `;
