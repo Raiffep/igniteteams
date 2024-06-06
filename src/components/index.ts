@@ -5,3 +5,5 @@ export { ListEmpty } from "./ListEmpty";
 export { Button } from "./Button";
 export { Loading } from "./Loading";
 export { Input } from "./Input";
+export { ButtonIcon } from "./ButtonIcon";
+export { Filter } from "./Filter";
