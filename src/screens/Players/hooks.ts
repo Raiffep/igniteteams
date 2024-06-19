@@ -1,4 +1,4 @@
-import { Key, useCallback, useState } from "react";
+import { Key, useCallback, useMemo, useState } from "react";
 
 export type TPlayer = {
   id: Key;
@@ -69,6 +69,13 @@ export const usePlayers = () => {
     setTeams(newTeams);
   }, [newPlayer]);
 
+  const handleRemoveTeam = useCallback((teamId: Key) => {
+    const newTeams = teams?.filter((team) => team?.id !== teamId);
+
+    setSelectedTeam(newTeams[0]);
+    setTeams(newTeams);
+  }, [teams]);
+
   const handleRemovePlayer = useCallback((player: TPlayer) => {
     const newTeams = teams?.map((team) => {
       if (team?.id === selectedTeam?.id) {
@@ -86,6 +93,7 @@ export const usePlayers = () => {
     teams,
     newPlayer,
     selectedTeam,
+    handleRemoveTeam,
     handleSelectTeam,
     handleAddNewPlayer,
     handleRemovePlayer,

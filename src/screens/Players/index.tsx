@@ -7,6 +7,7 @@ import {
   Highlight,
   ButtonIcon,
   ListEmpty,
+  Button,
 } from "@components/index";
 import { playaresStrings } from "./strings";
 
@@ -20,6 +21,7 @@ export const Players = () => {
     teams,
     newPlayer,
     selectedTeam,
+    handleRemoveTeam,
     handleSelectTeam,
     handleAddNewPlayer,
     handleRemovePlayer,
@@ -67,7 +69,10 @@ export const Players = () => {
         data={selectedTeam?.players}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => String(item?.id)}
-        contentContainerStyle={{ gap: 16, marginTop: 20 }}
+        contentContainerStyle={[
+          !selectedTeam?.players?.length ? { flex: 1 } : 
+          { gap: 16, marginTop: 20 },
+        ]}
         ListEmptyComponent={() => (
           <ListEmpty message={playaresStrings.listEmptyMessage} />
         )}
@@ -78,6 +83,11 @@ export const Players = () => {
             onPress={() => handleRemovePlayer(item)}
           />
         )}
+      />
+      <Button 
+        type="SECONDARY"
+        title={playaresStrings.removeTeamButtonTitle}
+        onPress={() => handleRemoveTeam(selectedTeam?.id)}
       />
     </Container>
   );
